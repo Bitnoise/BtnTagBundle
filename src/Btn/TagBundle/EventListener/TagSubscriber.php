@@ -60,11 +60,7 @@ class TagSubscriber implements EventSubscriber
      */
     protected function setTags(TaggableInterface $entity)
     {
-        $tagNames = $entity->getTagNames();
-        if (!$tagNames) {
-            return;
-        }
-
+        $tagNames          = $entity->getTagNames();
         $className         = $this->className;
         $entityTags        = $entity->getTags();
         $currentEntityTags = $entityTags ? clone $entityTags : $entityTags;
