@@ -16,7 +16,7 @@
     ],
     "require": {
         "doctrine/orm": "~2.2,>=2.2.3",
-        "bitnoise/base-bundle": "2.0.*"
+        "bitnoise/admin-bundle": "2.0.*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "~2.0.0",
