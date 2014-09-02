@@ -1,0 +1,11 @@
+# Composer
+composer.phar
+composer.lock
+vendor/*
+bin/*
+
+# OSX
+.DS_Store
+
+# Npm
+node_modules/*

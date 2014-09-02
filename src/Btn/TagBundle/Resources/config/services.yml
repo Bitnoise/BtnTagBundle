@@ -1,0 +1,15 @@
+parameters:
+    btn_tag.event_listener.tag_subscriber.class: Btn\TagBundle\EventListener\TagSubscriber
+
+services:
+    btn_tag.provider.tag:
+        class: %btn_base.provider.entity.class%
+        parent: btn_base.provider.abstract_entity
+        arguments: ['%btn_tag.tag.class%']
+
+    btn_tag.event_listener.tag_subscriber:
+        class: %btn_tag.event_listener.tag_subscriber.class%
+        argument:
+            className: %btn_tag.tag.class%
+        tag:
+            - { name: doctrine.event_subscriber }
