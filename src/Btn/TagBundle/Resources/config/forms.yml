@@ -1,0 +1,11 @@
+parameters:
+    btn_tag.form.type.tag.class: Btn\TagBundle\Form\Type\TagType
+
+services:
+    btn_tag.form.type.tag:
+        class: %btn_tag.form.type.tag.class%
+        parent: btn_admin.form.type.select2_hidden
+        calls:
+            - [setEntityProvider, [@btn_tag.provider.tag]]
+        tags:
+            - { name: form.type, alias: btn_tag }
