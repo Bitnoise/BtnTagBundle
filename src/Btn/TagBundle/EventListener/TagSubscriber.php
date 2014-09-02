@@ -75,6 +75,10 @@ class TagSubscriber implements EventSubscriber
                 $this->em->persist($tag);
                 $this->computeChangeSets($tag, $tagClassMetadata);
             }
+            if ($tag->getName() !== $tagName) {
+                $tag->setName($tagName);
+                $this->computeChangeSets($tag, $tagClassMetadata);
+            }
             if (!$entity->hasTag($tag)) {
                 $entity->addTag($tag);
             }
