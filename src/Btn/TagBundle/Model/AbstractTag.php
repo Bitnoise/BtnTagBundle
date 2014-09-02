@@ -1,6 +1,6 @@
 <?php
 
-namespace Btn\NewsBundle\Model;
+namespace Btn\TagBundle\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
