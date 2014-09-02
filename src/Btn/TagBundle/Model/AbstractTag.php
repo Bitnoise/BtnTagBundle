@@ -114,7 +114,8 @@ abstract class AbstractTag implements TagInterface
     /**
      *
      */
-    public static function slugify($name) {
+    public static function slugify($name)
+    {
         return Text::slugify($name);
     }
 }
