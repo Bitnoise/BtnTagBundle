@@ -118,4 +118,13 @@ abstract class AbstractTag implements TagInterface
     {
         return Text::slugify($name);
     }
+
+    /**
+     *
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
 }
