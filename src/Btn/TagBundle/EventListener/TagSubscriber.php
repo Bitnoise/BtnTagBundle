@@ -5,7 +5,6 @@ namespace Btn\TagBundle\EventListener;
 use Doctrine\ORM\Events;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\OnFlushEventArgs;
-use Btn\TagBundle\Model\TagInterface;
 use Btn\TagBundle\Model\TaggableInterface;
 
 class TagSubscriber implements EventSubscriber

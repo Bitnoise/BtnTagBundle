@@ -13,3 +13,7 @@ install:
 
 script: grunt test
 
+notifications:
+    hipchat:
+        rooms:
+            secure: G0cgil5XzPnPPZIKKcQ9fW+2NFL8PwBDdsEipuqnNPqfVLL1YuWcTmGgDqPe9KdxXNks9LFvMfslo3V6YaFdvIJSx2cbhJPZ7Db1ICZlaAxxSnlF7cF6bbG6ahB2waYaHI8G3fnmAhsPkJfKimnlN1CsfDgURu3ttIeZ3Px71PA=
