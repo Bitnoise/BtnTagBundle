@@ -9,7 +9,7 @@ services:
 
     btn_tag.event_listener.tag_subscriber:
         class: %btn_tag.event_listener.tag_subscriber.class%
-        argument:
+        arguments:
             className: %btn_tag.tag.class%
-        tag:
-            - { name: doctrine.event_subscriber }
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }

@@ -11,8 +11,6 @@ use Btn\TagBundle\Model\TaggableInterface;
 class TagSubscriber implements EventSubscriber
 {
     protected $className;
-    /** @var \Btn\TagBundle\Model\TagInterface $tag */
-    protected $tag;
     /** @var \Doctrine\ORM\EntityManager $em */
     protected $em;
     /** @var \Doctrine\ORM\UnitOfWork $uow */
@@ -77,7 +75,7 @@ class TagSubscriber implements EventSubscriber
             $tag = $repository->findOneBySlug($className::slugify($tagName));
             if (!$tag) {
                 $tag = new $className();
-                $tag->setNameAndSlug($tagName);
+                $tag->setNameWithSlug($tagName);
                 $this->em->persist($tag);
                 $this->computeChangeSets($tag, $tagClassMetadata);
             }
@@ -98,7 +96,7 @@ class TagSubscriber implements EventSubscriber
     /**
      *
      */
-    protected function computeChangeSets(TaggableInterface $entity, $classMetadata = null)
+    protected function computeChangeSets($entity, $classMetadata = null)
     {
         if (null === $classMetadata) {
             $classMetadata = $this->em->getClassMetadata(get_class($entity));
