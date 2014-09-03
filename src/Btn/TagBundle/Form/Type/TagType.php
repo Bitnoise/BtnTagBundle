@@ -5,7 +5,6 @@ namespace Btn\TagBundle\Form\Type;
 use Btn\AdminBundle\Form\Type\Select2Type;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TagType extends Select2Type
@@ -41,7 +40,7 @@ class TagType extends Select2Type
             $s2options['tags'] = $options['tags'];
         } else {
             foreach ($this->getTags() as $tag) {
-                $s2options['tags'][] = (string)$tag;
+                $s2options['tags'][] = (string) $tag;
             }
         }
 
