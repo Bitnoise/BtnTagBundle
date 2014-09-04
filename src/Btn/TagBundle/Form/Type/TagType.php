@@ -2,12 +2,10 @@
 
 namespace Btn\TagBundle\Form\Type;
 
-use Btn\AdminBundle\Form\Type\Select2Type;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\FormInterface;
+use Btn\AdminBundle\Form\Type\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TagType extends Select2Type
+class TagType extends AbstractType
 {
     /** @var \Doctrine\Common\Collections\ArrayCollection $tags */
     protected $tags;
@@ -27,46 +25,16 @@ class TagType extends Select2Type
     /**
      * {@inheritdoc}
      */
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
-        parent::buildView($view, $form, $options);
-
-        $s2options = array(
-            'tokenSeparators' => $options['separators'],
-            'tags'            => array(),
-        );
-
-        if ($options['tags']) {
-            $s2options['tags'] = $options['tags'];
-        } else {
-            foreach ($this->getTags() as $tag) {
-                $s2options['tags'][] = (string) $tag;
-            }
-        }
-
-        $view->vars['attr']['btn-select2-options'] = json_encode($s2options);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        $choices = array();
 
-        $resolver->setOptional(array(
-            'separators',
-            'tags',
-        ));
-
-        $resolver->setAllowedTypes(array(
-            'separators' => array('array'),
-            'tags'       => array('null', 'array'),
-        ));
+        foreach ($this->getTags() as $tag) {
+            $choices[$tag->getId()] = (string) $tag;
+        }
 
         $resolver->setDefaults(array(
-            'separators' => array(' ', ','),
-            'tags'       => null,
+            'choices' => $choices,
         ));
     }
 
@@ -75,7 +43,7 @@ class TagType extends Select2Type
      */
     public function getParent()
     {
-        return 'btn_select2_hidden';
+        return 'choice';
     }
 
     /**
